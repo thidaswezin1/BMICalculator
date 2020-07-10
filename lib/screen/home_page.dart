@@ -1,12 +1,13 @@
-import 'package:bmi_calculator/utility/constants.dart';
-
-import 'resuable_card.dart';
+import 'file:///C:/MyProjects/FlutterProjects/BMICalculator/bmi_calculator/lib/screen/results_page.dart';
+import 'package:bmi_calculator/calculate_brain.dart';
+import 'package:bmi_calculator/components/icon_content.dart';
+import 'package:bmi_calculator/constants.dart';
+import '../components/bottom_button.dart';
+import '../components/resuable_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'icon_content.dart';
-
-
+import '../components/round_icon_button.dart';
 
 enum Gender{
   male,
@@ -209,17 +210,28 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          Container(
-            color: kBottomContainerColor,
-            margin: const EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: 80.0,
+          BottomButton(
+            buttonTitle: 'CALCULATE',
+            onTap: (){
+              CalculateBrain cal = CalculateBrain(height: height,weight: weight);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context)=>
+                      ResultPage(
+                        bmiResult: cal.calculateBMI(),
+                        resultText: cal.getResult(),
+                        interpretation: cal.getInterpretation(),
+                      )
+                  )
+              );
+            },
           )
         ],
       )
     );
   }
 }
+
+
 
 
 

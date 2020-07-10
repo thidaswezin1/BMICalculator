@@ -1,6 +1,6 @@
 # bmi_calculator
 
-A new Flutter application.
+Udemy Course Development https://www.udemy.com/course/flutter-bootcamp-with-dart/
 
 ## Getting Started
 
